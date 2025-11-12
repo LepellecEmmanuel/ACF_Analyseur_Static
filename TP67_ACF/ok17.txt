@@ -1,0 +1,5 @@
+{
+	read(x)
+	read(y)
+	if (10+((x+y)-3)=(y+x)-(x-(x+7))) then exec(1) else exec(x+y)
+}

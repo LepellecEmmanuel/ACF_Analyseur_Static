@@ -1,0 +1,190 @@
+{
+    "version": "1.4.0",
+    "project": {
+        "name": "tp67_acf-test",
+        "directory": "/private/student/c/ec/elepellec/Master1-IL/ACF/TP-67/TP67_ACF",
+        "workspaceDir": "/private/student/c/ec/elepellec/Master1-IL/ACF/TP-67/TP67_ACF",
+        "sources": [
+            "/private/student/c/ec/elepellec/Master1-IL/ACF/TP-67/TP67_ACF/src/test/scala",
+            "/private/student/c/ec/elepellec/Master1-IL/ACF/TP-67/TP67_ACF/src/test/scala-2.13",
+            "/private/student/c/ec/elepellec/Master1-IL/ACF/TP-67/TP67_ACF/src/test/scala-2",
+            "/private/student/c/ec/elepellec/Master1-IL/ACF/TP-67/TP67_ACF/src/test/java",
+            "/private/student/c/ec/elepellec/Master1-IL/ACF/TP-67/TP67_ACF/target/scala-2.13/src_managed/test"
+        ],
+        "dependencies": [
+            "tp67_acf"
+        ],
+        "classpath": [
+            "/private/student/c/ec/elepellec/Master1-IL/ACF/TP-67/TP67_ACF/.bloop/tp67_acf/scala-2.13/classes",
+            "/private/student/c/ec/elepellec/Master1-IL/ACF/TP-67/TP67_ACF/libJars/tp67.jar",
+            "/private/student/c/ec/elepellec/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-library/2.13.16/scala-library-2.13.16.jar",
+            "/private/student/c/ec/elepellec/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/modules/scala-parser-combinators_2.13/1.1.2/scala-parser-combinators_2.13-1.1.2.jar"
+        ],
+        "out": "/private/student/c/ec/elepellec/Master1-IL/ACF/TP-67/TP67_ACF/.bloop/tp67_acf",
+        "classesDir": "/private/student/c/ec/elepellec/Master1-IL/ACF/TP-67/TP67_ACF/.bloop/tp67_acf/scala-2.13/test-classes",
+        "resources": [
+            "/private/student/c/ec/elepellec/Master1-IL/ACF/TP-67/TP67_ACF/src/test/resources",
+            "/private/student/c/ec/elepellec/Master1-IL/ACF/TP-67/TP67_ACF/target/scala-2.13/resource_managed/test"
+        ],
+        "scala": {
+            "organization": "org.scala-lang",
+            "name": "scala-compiler",
+            "version": "2.13.16",
+            "options": [
+                
+            ],
+            "jars": [
+                "/private/student/c/ec/elepellec/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-library/2.13.16/scala-library-2.13.16.jar",
+                "/private/student/c/ec/elepellec/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-compiler/2.13.16/scala-compiler-2.13.16.jar",
+                "/private/student/c/ec/elepellec/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-reflect/2.13.16/scala-reflect-2.13.16.jar",
+                "/private/student/c/ec/elepellec/.cache/coursier/v1/https/repo1.maven.org/maven2/io/github/java-diff-utils/java-diff-utils/4.15/java-diff-utils-4.15.jar",
+                "/private/student/c/ec/elepellec/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jline/jline/3.27.1/jline-3.27.1-jdk8.jar"
+            ],
+            "setup": {
+                "order": "mixed",
+                "addLibraryToBootClasspath": false,
+                "addCompilerToClasspath": false,
+                "addExtraJarsToClasspath": false,
+                "manageBootClasspath": false,
+                "filterLibraryFromClasspath": false
+            },
+            "bridgeJars": [
+                "/private/student/c/ec/elepellec/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala2-sbt-bridge/2.13.16/scala2-sbt-bridge-2.13.16.jar"
+            ]
+        },
+        "java": {
+            "options": [
+                
+            ]
+        },
+        "test": {
+            "frameworks": [
+                {
+                    "names": [
+                        "org.scalacheck.ScalaCheckFramework"
+                    ]
+                },
+                {
+                    "names": [
+                        "org.specs2.runner.Specs2Framework",
+                        "org.specs2.runner.SpecsFramework"
+                    ]
+                },
+                {
+                    "names": [
+                        "org.specs.runner.SpecsFramework"
+                    ]
+                },
+                {
+                    "names": [
+                        "org.scalatest.tools.Framework",
+                        "org.scalatest.tools.ScalaTestFramework"
+                    ]
+                },
+                {
+                    "names": [
+                        "com.novocode.junit.JUnitFramework"
+                    ]
+                },
+                {
+                    "names": [
+                        "munit.Framework"
+                    ]
+                },
+                {
+                    "names": [
+                        "zio.test.sbt.ZTestFramework"
+                    ]
+                },
+                {
+                    "names": [
+                        "weaver.framework.CatsEffect"
+                    ]
+                },
+                {
+                    "names": [
+                        "hedgehog.sbt.Framework"
+                    ]
+                }
+            ],
+            "options": {
+                "excludes": [
+                    
+                ],
+                "arguments": [
+                    
+                ]
+            }
+        },
+        "platform": {
+            "name": "jvm",
+            "config": {
+                "home": "/usr/lib/jvm/java-21-openjdk-amd64",
+                "options": [
+                    "-Duser.dir=/private/student/c/ec/elepellec/Master1-IL/ACF/TP-67/TP67_ACF"
+                ]
+            },
+            "mainClass": [
+                
+            ]
+        },
+        "resolution": {
+            "modules": [
+                {
+                    "organization": "org.scala-lang",
+                    "name": "scala-library",
+                    "version": "2.13.16",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "scala-library",
+                            "path": "/private/student/c/ec/elepellec/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-library/2.13.16/scala-library-2.13.16.jar"
+                        },
+                        {
+                            "name": "scala-library",
+                            "classifier": "sources",
+                            "path": "/private/student/c/ec/elepellec/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-library/2.13.16/scala-library-2.13.16-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "org.scala-lang.modules",
+                    "name": "scala-parser-combinators_2.13",
+                    "version": "1.1.2",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "scala-parser-combinators_2.13",
+                            "path": "/private/student/c/ec/elepellec/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/modules/scala-parser-combinators_2.13/1.1.2/scala-parser-combinators_2.13-1.1.2.jar"
+                        },
+                        {
+                            "name": "scala-parser-combinators_2.13",
+                            "classifier": "sources",
+                            "path": "/private/student/c/ec/elepellec/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/modules/scala-parser-combinators_2.13/1.1.2/scala-parser-combinators_2.13-1.1.2-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "org.scala-lang",
+                    "name": "scala-library",
+                    "version": "2.13.16",
+                    "configurations": "optional",
+                    "artifacts": [
+                        {
+                            "name": "scala-library",
+                            "path": "/private/student/c/ec/elepellec/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-library/2.13.16/scala-library-2.13.16.jar"
+                        },
+                        {
+                            "name": "scala-library",
+                            "classifier": "sources",
+                            "path": "/private/student/c/ec/elepellec/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-library/2.13.16/scala-library-2.13.16-sources.jar"
+                        }
+                    ]
+                }
+            ]
+        },
+        "tags": [
+            "test"
+        ]
+    }
+}

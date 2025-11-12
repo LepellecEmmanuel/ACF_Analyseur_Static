@@ -1,0 +1,56 @@
+[0m[[0m[0mdebug[0m] [0m[0m[zinc] IncrementalCompile -----------[0m
+[0m[[0m[0mdebug[0m] [0m[0mIncrementalCompile.incrementalCompile[0m
+[0m[[0m[0mdebug[0m] [0m[0mprevious = Stamps for: 118 products, 7 sources, 3 libraries[0m
+[0m[[0m[0mdebug[0m] [0m[0mcurrent source = Set(${BASE}/src/main/scala/tp67/tp67.scala, ${BASE}/src/main/scala/utilities/Parser.scala, ${BASE}/src/main/scala/utilities/Datatype.scala, ${BASE}/src/main/scala/tp67/Main.scala, ${BASE}/src/main/scala/utilities/PrettyPrinter.scala, ${BASE}/src/main/scala/utilities/Evaluator.scala, ${BASE}/src/main/scala/tp67/Analyzer.scala)[0m
+[0m[[0m[0mdebug[0m] [0m[0m> initialChanges = InitialChanges(Changes(added = Set(), removed = Set(), changed = Set(${BASE}/src/main/scala/tp67/tp67.scala), unmodified = ...),Set(),Set(),API Changes: Set())[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0mInitial source changes:[0m
+[0m[[0m[0mdebug[0m] [0m[0m	removed: Set()[0m
+[0m[[0m[0mdebug[0m] [0m[0m	added: Set()[0m
+[0m[[0m[0mdebug[0m] [0m[0m	modified: Set(${BASE}/src/main/scala/tp67/tp67.scala)[0m
+[0m[[0m[0mdebug[0m] [0m[0mInvalidated products: Set()[0m
+[0m[[0m[0mdebug[0m] [0m[0mExternal API changes: API Changes: Set()[0m
+[0m[[0m[0mdebug[0m] [0m[0mModified binary dependencies: Set()[0m
+[0m[[0m[0mdebug[0m] [0m[0mInitial directly invalidated classes: Set(tp67.tp67.SX, tp67.Lista, tp67.HOL, tp67.Num.One, tp67.tp67.staticValue, tp67.tp67, tp67.Nat, tp67.AutomaticConversion, tp67.Nat.Suc, tp67.Nat.nat, tp67.Str.char, tp67.Code_Numeral, tp67.Int.int_of_integer, tp67.Num.Bit1, tp67.Product_Type, tp67.tp67.Value, tp67.HOL.equal, tp67.tp67.Nonea, tp67.tp67.Undefine, tp67.Str, tp67.Int, tp67.tp67.Somea, tp67.Num.Bit0, tp67.Str.Char, tp67.tp67.staticEvent, tp67.tp67.SP, tp67.Num.num, tp67.Int.int, tp67.tp67.option, tp67.Num, tp67.Nat.zero_nat)[0m
+[0m[[0m[0mdebug[0m] [0m[0mSources indirectly invalidated by:[0m
+[0m[[0m[0mdebug[0m] [0m[0m	product: Set()[0m
+[0m[[0m[0mdebug[0m] [0m[0m	binary dep: Set()[0m
+[0m[[0m[0mdebug[0m] [0m[0m	external source: Set()[0m
+[0m[[0m[0mdebug[0m] [0m[0mAll initially invalidated classes: Set(tp67.tp67.SX, tp67.Lista, tp67.HOL, tp67.Num.One, tp67.tp67.staticValue, tp67.tp67, tp67.Nat, tp67.AutomaticConversion, tp67.Nat.Suc, tp67.Nat.nat, tp67.Str.char, tp67.Code_Numeral, tp67.Int.int_of_integer, tp67.Num.Bit1, tp67.Product_Type, tp67.tp67.Value, tp67.HOL.equal, tp67.tp67.Nonea, tp67.tp67.Undefine, tp67.Str, tp67.Int, tp67.tp67.Somea, tp67.Num.Bit0, tp67.Str.Char, tp67.tp67.staticEvent, tp67.tp67.SP, tp67.Num.num, tp67.Int.int, tp67.tp67.option, tp67.Num, tp67.Nat.zero_nat)[0m
+[0m[[0m[0mdebug[0m] [0m[0mAll initially invalidated sources:Set(${BASE}/src/main/scala/tp67/tp67.scala)[0m
+[0m[[0m[0mdebug[0m] [0m[0mInitial set of included nodes: tp67.tp67.SX, tp67.Lista, tp67.HOL, tp67.Num.One, tp67.tp67.staticValue, tp67.tp67, tp67.Nat, tp67.AutomaticConversion, tp67.Nat.Suc, tp67.Nat.nat, tp67.Str.char, tp67.Code_Numeral, tp67.Int.int_of_integer, tp67.Num.Bit1, tp67.Product_Type, tp67.tp67.Value, tp67.HOL.equal, tp67.tp67.Nonea, tp67.tp67.Undefine, tp67.Str, tp67.Int, tp67.tp67.Somea, tp67.Num.Bit0, tp67.Str.Char, tp67.tp67.staticEvent, tp67.tp67.SP, tp67.Num.num, tp67.Int.int, tp67.tp67.option, tp67.Num, tp67.Nat.zero_nat[0m
+[0m[[0m[0mdebug[0m] [0m[0mIncluding tp67.tp67.Value by tp67.tp67.staticValue[0m
+[0m[[0m[0mdebug[0m] [0m[0mIncluding tp67.tp67.Undefine by tp67.tp67.staticValue[0m
+[0m[[0m[0mdebug[0m] [0m[0mIncluding tp67.Nat.zero_nat by tp67.Nat.nat[0m
+[0m[[0m[0mdebug[0m] [0m[0mIncluding tp67.Str.Char by tp67.Str.char[0m
+[0m[[0m[0mdebug[0m] [0m[0mIncluding tp67.tp67.SP by tp67.tp67.staticEvent[0m
+[0m[[0m[0mdebug[0m] [0m[0mcompilation cycle 1[0m
+[0m[[0m[0minfo[0m] [0m[0mcompiling 1 Scala source to /private/student/c/ec/elepellec/Master1-IL/ACF/TP-67/TP67_ACF/target/scala-2.13/classes ...[0m
+[0m[[0m[0mdebug[0m] [0m[0mReturning already retrieved and compiled bridge: /private/student/c/ec/elepellec/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala2-sbt-bridge/2.13.16/scala2-sbt-bridge-2.13.16.jar.[0m
+[0m[[0m[0mdebug[0m] [0m[0m[zinc] Running cached compiler 46d56905 for Scala compiler version 2.13.16[0m
+[0m[[0m[0mdebug[0m] [0m[0m[zinc] The Scala compiler is invoked with:[0m
+[0m[[0m[0mdebug[0m] [0m[0m	-classpath[0m
+[0m[[0m[0mdebug[0m] [0m[0m	/private/student/c/ec/elepellec/Master1-IL/ACF/TP-67/TP67_ACF/target/scala-2.13/classes:/private/student/c/ec/elepellec/Master1-IL/ACF/TP-67/TP67_ACF/libJars/tp67.jar:/private/student/c/ec/elepellec/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-library/2.13.16/scala-library-2.13.16.jar:/private/student/c/ec/elepellec/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/modules/scala-parser-combinators_2.13/1.1.2/scala-parser-combinators_2.13-1.1.2.jar[0m
+[0m[[0m[0mdebug[0m] [0m[0mScala compilation took 3.668919792 s[0m
+[0m[[0m[0mdebug[0m] [0m[0mdone compiling[0m
+[0m[[0m[0mdebug[0m] [0m[0mInvalidating (transitively) by inheritance from tp67.tp67...[0m
+[0m[[0m[0mdebug[0m] [0m[0mInitial set of included nodes: tp67.tp67[0m
+[0m[[0m[0mdebug[0m] [0m[0mInvalidated by transitive inheritance dependency: Set(tp67.tp67)[0m
+[0m[[0m[0mdebug[0m] [0m[0mNone of the modified names appears in source file of tp67.Analyzer. This dependency is not being considered for invalidation.[0m
+[0m[[0m[0mdebug[0m] [0m[0mChange NamesChange(tp67.tp67,ModifiedNames(changes = UsedName(cleanSection,[Default]), UsedName(equal_staticValue,[Default]), UsedName(getSection,[Default]), UsedName(joinTables,[Default]))) invalidates 1 classes due to The tp67.tp67 has the following regular definitions changed:[0m
+[0m[[0m[0mdebug[0m] [0m[0m	UsedName(cleanSection,[Default]), UsedName(equal_staticValue,[Default]), UsedName(getSection,[Default]), UsedName(joinTables,[Default]).[0m
+[0m[[0m[0mdebug[0m] [0m[0m  > by transitive inheritance: Set(tp67.tp67)[0m
+[0m[[0m[0mdebug[0m] [0m[0m  > [0m
+[0m[[0m[0mdebug[0m] [0m[0m  > [0m
+[0m[[0m[0mdebug[0m] [0m[0m  > [0m
+[0m[[0m[0mdebug[0m] [0m[0m        [0m
+[0m[[0m[0mdebug[0m] [0m[0mNew invalidations:[0m
+[0m[[0m[0mdebug[0m] [0m[0mInitial set of included nodes: [0m
+[0m[[0m[0mdebug[0m] [0m[0mPreviously invalidated, but (transitively) depend on new invalidations:[0m
+[0m[[0m[0mdebug[0m] [0m[0mFinal step, transitive dependencies:[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Set()[0m
+[0m[[0m[0mdebug[0m] [0m[0mInitial set of included nodes: tp67.tp67.SX, tp67.Lista, tp67.HOL, tp67.Num.One, tp67.tp67.staticValue, tp67.tp67, tp67.Nat, tp67.AutomaticConversion, tp67.Nat.Suc, tp67.Nat.nat, tp67.Str.char, tp67.Code_Numeral, tp67.Int.int_of_integer, tp67.Num.Bit1, tp67.Product_Type, tp67.tp67.Value, tp67.HOL.equal, tp67.tp67.Nonea, tp67.tp67.Undefine, tp67.Str, tp67.Int, tp67.tp67.Somea, tp67.Num.Bit0, tp67.Str.Char, tp67.tp67.staticEvent, tp67.tp67.SP, tp67.Num.num, tp67.Int.int, tp67.tp67.option, tp67.Num, tp67.Nat.zero_nat[0m
+[0m[[0m[0mdebug[0m] [0m[0mIncluding tp67.Analyzer by tp67.tp67[0m
+[0m[[0m[0mdebug[0m] [0m[0mIncluding tp67.Main by tp67.Analyzer[0m
+[0m[[0m[0mdebug[0m] [0m[0mInvalidated macros due to upstream dependencies change: Set()[0m
+[0m[[0m[0mdebug[0m] [0m[0mNo classes were invalidated.[0m

@@ -1,0 +1,69 @@
+2025.11.03 11:30:05 INFO  Started: Metals version 1.5.2 in folders '/private/student/c/ec/elepellec/Master1-IL/ACF/TP-67/TP67_ACF' for client Visual Studio Code 1.89.1.[0m
+2025.11.03 11:30:10 INFO  running '/usr/bin/sbt -Dbloop.export-jar-classifiers=sources bloopInstall'[0m
+2025.11.03 11:30:10 INFO  no build target found for /private/student/c/ec/elepellec/Master1-IL/ACF/TP-67/TP67_ACF/project/project/metals.sbt. Using presentation compiler with project's scala-library version: 3.3.5[0m
+2025.11.03 11:30:10 WARN  no build target for: /private/student/c/ec/elepellec/Master1-IL/ACF/TP-67/TP67_ACF/project/metals.sbt[0m
+2025.11.03 11:30:10 WARN  no build target for: /private/student/c/ec/elepellec/Master1-IL/ACF/TP-67/TP67_ACF/project/project/metals.sbt[0m
+2025.11.03 11:30:12 INFO  [info] welcome to sbt 1.11.5 (Ubuntu Java 21.0.8)[0m
+2025.11.03 11:30:12 INFO  no build target found for /private/student/c/ec/elepellec/Master1-IL/ACF/TP-67/TP67_ACF/project/metals.sbt. Using presentation compiler with project's scala-library version: 3.3.5[0m
+2025.11.03 11:30:13 INFO  [info] loading settings for project tp67_acf-build-build from metals.sbt...[0m
+2025.11.03 11:30:13 INFO  [info] loading project definition from /private/student/c/ec/elepellec/Master1-IL/ACF/TP-67/TP67_ACF/project/project[0m
+2025.11.03 11:30:15 INFO  [info] loading settings for project tp67_acf-build from metals.sbt...[0m
+2025.11.03 11:30:15 INFO  [info] loading project definition from /private/student/c/ec/elepellec/Master1-IL/ACF/TP-67/TP67_ACF/project[0m
+2025.11.03 11:30:18 INFO  [success] Generated .bloop/tp67_acf-build.json[0m
+2025.11.03 11:30:18 INFO  [success] Total time: 3 s, completed 3 nov. 2025, 11:30:19[0m
+2025.11.03 11:30:19 INFO  [info] loading settings for project tp67_acf from build.sbt...[0m
+2025.11.03 11:30:19 INFO  [info] set current project to TP67_ACF (in build file:/private/student/c/ec/elepellec/Master1-IL/ACF/TP-67/TP67_ACF/)[0m
+2025.11.03 11:30:20 INFO  [success] Generated .bloop/tp67_acf-test.json[0m
+2025.11.03 11:30:20 INFO  [success] Generated .bloop/tp67_acf.json[0m
+2025.11.03 11:30:20 INFO  [success] Total time: 1 s, completed 3 nov. 2025, 11:30:20[0m
+2025.11.03 11:30:21 INFO  time: ran 'sbt bloopInstall' in 10s[0m
+2025.11.03 11:30:21 INFO  Attempting to connect to the build server...[0m
+2025.11.03 11:30:21 INFO  No running Bloop server found, starting one.[0m
+2025.11.03 11:30:21 INFO  Starting compilation server[0m
+2025.11.03 11:30:23 INFO  tracing is disabled for protocol BSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /private/student/c/ec/elepellec/Master1-IL/ACF/TP-67/TP67_ACF/.metals/bsp.trace.json or /private/student/c/ec/elepellec/.cache/metals/bsp.trace.json[0m
+2025.11.03 11:30:24 INFO  Attempting to connect to the build server...[0m
+2025.11.03 11:30:24 INFO  Found a Bloop server running[0m
+2025.11.03 11:30:25 INFO  tracing is disabled for protocol BSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /private/student/c/ec/elepellec/Master1-IL/ACF/TP-67/TP67_ACF/project/.metals/bsp.trace.json or /private/student/c/ec/elepellec/.cache/metals/bsp.trace.json[0m
+2025.11.03 11:30:26 INFO  time: Connected to build server in 5.72s[0m
+2025.11.03 11:30:26 INFO  Connected to Build server: Bloop v2.0.9[0m
+2025.11.03 11:30:27 INFO  time: Imported build in 0.11s[0m
+2025.11.03 11:30:31 WARN  Could not find java sources in /usr/lib/jvm/src.zip, /usr/lib/jvm/lib/src.zip, /usr/lib/jvm/java-21-openjdk-amd64/src.zip, /usr/lib/jvm/java-21-openjdk-amd64/lib/src.zip, /usr/lib/jvm/src.zip, /usr/lib/jvm/lib/src.zip, /usr/lib/jvm/java-21-openjdk-amd64/src.zip, /usr/lib/jvm/java-21-openjdk-amd64/lib/src.zip. Java symbols will not be available.[0m
+2025.11.03 11:30:34 INFO  time: indexed workspace in 7.62s[0m
+2025.11.03 13:04:58 INFO  Shut down connection with build server.[0m
+2025.11.03 13:04:58 INFO  Shut down connection with build server.[0m
+2025.11.07 13:03:05 INFO  Started: Metals version 1.5.2 in folders '/private/student/c/ec/elepellec/Master1-IL/ACF/TP-67/TP67_ACF' for client Visual Studio Code 1.101.2.[0m
+2025.11.07 13:03:06 INFO  Attempting to connect to the build server...[0m
+2025.11.07 13:03:06 INFO  Found a Bloop server running[0m
+2025.11.07 13:03:06 INFO  tracing is disabled for protocol BSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /private/student/c/ec/elepellec/Master1-IL/ACF/TP-67/TP67_ACF/.metals/bsp.trace.json or /private/student/c/ec/elepellec/.cache/metals/bsp.trace.json[0m
+2025.11.07 13:03:06 INFO  Attempting to connect to the build server...[0m
+2025.11.07 13:03:06 INFO  Found a Bloop server running[0m
+2025.11.07 13:03:06 INFO  tracing is disabled for protocol BSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /private/student/c/ec/elepellec/Master1-IL/ACF/TP-67/TP67_ACF/project/.metals/bsp.trace.json or /private/student/c/ec/elepellec/.cache/metals/bsp.trace.json[0m
+2025.11.07 13:03:06 INFO  time: Connected to build server in 0.65s[0m
+2025.11.07 13:03:06 INFO  Connected to Build server: Bloop v2.0.9[0m
+2025.11.07 13:03:07 INFO  time: Imported build in 0.27s[0m
+2025.11.07 13:03:10 WARN  Could not find java sources in /usr/lib/jvm/src.zip, /usr/lib/jvm/lib/src.zip, /usr/lib/jvm/java-21-openjdk-amd64/src.zip, /usr/lib/jvm/java-21-openjdk-amd64/lib/src.zip, /usr/lib/jvm/src.zip, /usr/lib/jvm/lib/src.zip, /usr/lib/jvm/java-21-openjdk-amd64/src.zip, /usr/lib/jvm/java-21-openjdk-amd64/lib/src.zip. Java symbols will not be available.[0m
+2025.11.07 13:03:11 INFO  time: indexed workspace in 4.12s[0m
+2025.11.07 13:19:56 INFO  compiling tp67_acf (7 scala sources)[0m
+2025.11.07 13:20:03 WARN  6 feature warnings; re-run with -feature for details[0m
+2025.11.07 13:20:04 INFO  time: compiled tp67_acf in 8.28s[0m
+2025.11.07 13:20:06 INFO  compiling tp67_acf (1 scala source)[0m
+2025.11.07 13:20:06 INFO  time: compiled tp67_acf in 0.62s[0m
+2025.11.07 13:20:40 INFO  compiling tp67_acf (1 scala source)[0m
+2025.11.07 13:20:40 INFO  time: compiled tp67_acf in 0.82s[0m
+2025.11.07 13:20:59 INFO  compiling tp67_acf (1 scala source)[0m
+2025.11.07 13:21:01 WARN  6 feature warnings; re-run with -feature for details[0m
+2025.11.07 13:21:01 INFO  time: compiled tp67_acf in 2.97s[0m
+2025.11.07 13:36:14 INFO  compiling tp67_acf (1 scala source)[0m
+2025.11.07 13:36:17 WARN  6 feature warnings; re-run with -feature for details[0m
+2025.11.07 13:36:17 INFO  time: compiled tp67_acf in 3.52s[0m
+2025.11.07 13:50:39 INFO  compiling tp67_acf (1 scala source)[0m
+2025.11.07 13:50:42 WARN  6 feature warnings; re-run with -feature for details[0m
+2025.11.07 13:50:42 INFO  time: compiled tp67_acf in 3.85s[0m
+2025.11.07 14:49:55 INFO  compiling tp67_acf (1 scala source)[0m
+2025.11.07 14:49:58 WARN  6 feature warnings; re-run with -feature for details[0m
+2025.11.07 14:49:58 INFO  time: compiled tp67_acf in 3.82s[0m
+2025.11.07 14:54:53 INFO  Shutting down server[0m
+2025.11.07 14:54:53 INFO  shutting down Metals[0m
+2025.11.07 14:54:53 INFO  Shut down connection with build server.[0m
+2025.11.07 14:54:53 INFO  Shut down connection with build server.[0m
+2025.11.07 14:54:53 INFO  Exiting server[0m
