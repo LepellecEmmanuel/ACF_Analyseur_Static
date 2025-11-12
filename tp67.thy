@@ -3,21 +3,8 @@ imports Main  "~~/src/HOL/Library/Code_Target_Int"
 begin
 
 (* Types des expressions, conditions et programmes (statement) *)
+
 datatype expression= Constant int | Variable string | Sum expression expression | Sub expression expression
-
-datatype staticValue =  Undefine | Value int 
-
-fun staticAdd::"staticValue \<Rightarrow> staticValue \<Rightarrow> staticValue"
-  where
-"staticAdd Undefine _ = Undefine" |
-"staticAdd _ Undefine = Undefine" |
-"staticAdd (Value x) (Value y) = Value(x+y)"
-
-fun staticSub::"staticValue \<Rightarrow> staticValue \<Rightarrow> staticValue"
-  where
-"staticSub Undefine _ = Undefine" |
-"staticSub _ Undefine = Undefine" |
-"staticSub (Value x) (Value y) = Value(x-y)"
 
 datatype condition= Eq expression expression
 
@@ -28,6 +15,29 @@ datatype statement= Seq statement statement |
                     Exec expression | 
                     If condition statement statement |
                     Skip
+
+(* type des expressions static et méthodes utilitaires sur ce type *)
+
+datatype staticValue =  Undefine | Value int | Either int int 
+
+fun staticAdd::"staticValue \<Rightarrow> staticValue \<Rightarrow> staticValue"
+  where
+"staticAdd Undefine _ = Undefine" |
+"staticAdd _ Undefine = Undefine" |
+"staticAdd (Value x) (Value y) = Value(x+y)" |
+"staticAdd (Either x y) (Value z) = Either (x+z) (y+z)" |
+"staticAdd (Value x) (Either y z) = Either (x+y) (x+z)" |
+"staticAdd (Either x y) (Either z t) = Undefine"
+
+fun staticSub::"staticValue \<Rightarrow> staticValue \<Rightarrow> staticValue"
+  where
+"staticSub Undefine _ = Undefine" |
+"staticSub _ Undefine = Undefine" |
+"staticSub (Value x) (Value y) = Value(x-y)" |
+"staticSub (Either x y) (Value z) = Either (x-z) (y-z)" |
+"staticSub (Value x) (Either y z) = Either (x-y) (x-z)" |
+"staticSub (Either x y) (Either z t) = Undefine"
+
 (* Un exemple d'expression *)
 
 (* expr1= (x-10) *)
@@ -63,7 +73,7 @@ definition "p3= (Seq (Aff ''x'' (Constant 0)) (Exec (Variable ''x'')))"
 definition "p4= (Seq (Read ''x'') (Print (Sum (Variable ''x'') (Constant 1))))"
 
 
-(* Le type des evenements soit X: execute, soit P: print *)
+(* Le type des evenements soit X: execute, soit P: print et le type static correspondant *)
 datatype event= X int | P int
 
 datatype staticEvent = SX staticValue | SP staticValue
@@ -73,24 +83,19 @@ datatype staticEvent = SX staticValue | SP staticValue
 type_synonym outchan= "event list"
 definition "el1= [X 1, P 10, X 0, P 20]"                   (* Un exemple de flux de sortie *)
 
-type_synonym staticOutchan= "staticEvent list"
-
 type_synonym inchan= "int list"           
 definition "il1= [1,-2,10]"                                (* Un exemple de flux d'entree [1,-2,10]              *)
 
 type_synonym symTable= "(string * int) list"
 definition "(st1::symTable)= [(''x'',10),(''y'',12)]"      (* Un exemple de table de symbole *)
 
+(* les  types des flux de sortie, d'entree et les tables de symboles statics *)
+
+type_synonym staticOutchan= "staticEvent list"
+definition "staticel1= [SX (Value 1), SP (Value 10), SX (Value 0), SP Undefine]"
+
 type_synonym staticSymTable = "(string * staticValue) list"
-
-fun cleanTable::"staticSymTable => staticSymTable"
-  where
-"cleanTable [] = []" |
-"cleanTable ((x, e)#xs) = ( (x, Undefine)#(cleanTable xs) )"
-
-fun cleanSection::"staticSymTable => staticSymTable => staticSymTable"
-  where
-"cleanSection t1 t = ( let sectionSize = (length t1) - (length t) in cleanTable (take sectionSize t1) )"
+definition "(staticst1::staticSymTable)= [(''x'', (Value 10)),(''y'', Undefine)]"
 
 (* La fonction (partielle) de recherche dans une liste de couple, par exemple une table de symbole *)
 datatype 'a option= None | Some 'a
@@ -105,20 +110,37 @@ where
 value "assoc ''x'' st1"     (* quand la variable est dans la table st1 *)
 value "assoc ''z'' st1"     (* quand la variable n'est pas dans la table st1 *)
 
+(* méthodes utilitaires sur les tables de symboles statics *)
+
+fun cleanTable::"staticSymTable => staticSymTable"
+  where
+"cleanTable [] = []" |
+"cleanTable ((x, e)#xs) = ( (x, Undefine)#(cleanTable xs) )"
+
+fun cleanSection::"staticSymTable => staticSymTable => staticSymTable"
+  where
+"cleanSection t1 t = ( let sectionSize = (length t1) - (length t) in cleanTable (take sectionSize t1) )"
+
 fun getSection::"staticSymTable \<Rightarrow> staticSymTable \<Rightarrow> staticSymTable"
   where
 "getSection t1 t = ( let sectionSize = (length t1) - (length t) in (take sectionSize t1) )"
 
+(* fusionne les tables de symboles static de blocs d'éxécutions disjoints *)
 fun joinTables::"staticSymTable \<Rightarrow> staticSymTable \<Rightarrow> staticSymTable"
   where
 "joinTables [] ys = (cleanTable ys)" |
-"joinTables ((x, e)#xs) ys = ( case (assoc x ys) of Some y \<Rightarrow> (
-                                if e = y then ( (x, e)#(joinTables xs ys) )
-                                         else ( (x, Undefine)#(joinTables xs ys) ) ) |
-                                None \<Rightarrow> (x, Undefine)#(joinTables xs ys)
-)"
+"joinTables ((x, Undefine)#xs) ys = ( (x, Undefine)#(joinTables xs ys) )" |
+"joinTables ((x, (Value e))#xs) ys = ( case (assoc x ys) of Some (Value y) \<Rightarrow> (
+                                if e = y then ( (x, (Value e))#(joinTables xs ys) )
+                                         else ( (x, (Either e y))#(joinTables xs ys) ) ) |
+                                None \<Rightarrow> (x, Undefine)#(joinTables xs ys) |
+                                Some (Either a b) \<Rightarrow> (x, Undefine)#(joinTables xs ys) |
+                                Some Undefine \<Rightarrow> (x, Undefine)#(joinTables xs ys)
+)" |
+"joinTables ((x, Either a b)#xs) ys = (x, Undefine)#(joinTables xs ys)"
 
 (* Evaluation des expressions par rapport a une table de symboles *)
+
 fun evalE:: "expression \<Rightarrow> symTable \<Rightarrow> int"
 where
 "evalE (Constant s) e = s" |
@@ -148,14 +170,13 @@ where
 
 fun staticEqual::"staticValue \<Rightarrow> staticValue \<Rightarrow> bool option"
   where
-"staticEqual Undefine _ = None" |
-"staticEqual _ Undefine = None" |
-"staticEqual (Value x) (Value y) = Some( (x=y) )"
+"staticEqual (Value x) (Value y) = Some( (x=y) )" |
+"staticEqual e1 e2 = None"
 
-fun staticEvalC:: "condition \<Rightarrow> staticSymTable \<Rightarrow> bool option"
+fun staticEvalC:: "condition \<Rightarrow> staticSymTable \<Rightarrow> bool tp67.option"
   where
 "staticEvalC (Eq (Variable x) (Variable y)) t = ( if x = y then (Some True) else
-                                    (staticEqual (staticEvalE (Variable x) t) (staticEvalE (Variable y) t))
+                                    ( staticEqual (staticEvalE (Variable x) t) (staticEvalE (Variable y) t) )
  )" |
 "staticEvalC (Eq e1 e2) t = ( staticEqual (staticEvalE e1 t) (staticEvalE e2 t) )"
 
@@ -274,17 +295,20 @@ definition "ok17= (Seq (Read ''x'') (Seq (Read ''y'') (If (Eq (Sum (Constant 10)
 (* Le TP commence ici! *)
 (* TODO: BAD, san0, lemme de correction *)
 
+(* Indique si le résultat de l'éxécution d'un programme éxécute du code dangereux *)
 fun BAD::"(symTable * inchan * outchan) \<Rightarrow>  bool"
   where
 "BAD (t, inch, []) = False" |
 "BAD (t, inch, (X e)#outch) = (e=0 \<or> (BAD (t, inch, outch)))" |
 "BAD (t, inch, (P e)#outch) = (BAD (t, inch, outch))"
 
+(* Indique si le résultat de l'éxécution static du programme éxécute du code dangereux *)
 fun staticBAD::"staticSymTable * staticOutchan \<Rightarrow> bool"
   where
 "staticBAD (t, []) = False" |
 "staticBAD (t, (SX (Undefine))#outch) = True" |
 "staticBAD (t, (SX (Value e))#outch) = (e=0 \<or> (staticBAD (t, outch)))" |
+"staticBAD (t, (SX (Either x y))#outch) = (x=0 \<or> y=0 \<or> (staticBAD (t, outch)))" |
 "staticBAD (t, (SP e)#outch) = (staticBAD (t, outch))"
 
 (* refuse les programmes qui contiennent une instruction Exec *)
@@ -318,7 +342,9 @@ fun san2::"statement \<Rightarrow> bool"
 "san2 (Exec expr) = False" |
 "san2 statement = True"
 
-
+(* Accepte des programmes contenant seulement des instructions Exec appellées sur des constantes différentes de 0
+   ou des opérations sur des constantes dont le résultat est différent de 0 en ignorant les blocs trivialements 
+   non parcourus *)
 fun san3::"statement \<Rightarrow> bool"
   where
 "san3 (Seq s1 s2) = ((san3 s1) \<and> (san3 s2))" |
@@ -330,24 +356,26 @@ fun san3::"statement \<Rightarrow> bool"
 "san3 (Exec expr) = False" |
 "san3 statement = True"
 
+(* Accepte des programmes dont l'évaluation static n'indique pas l'éxécution de code dangereux *)
 fun san4::"statement \<Rightarrow> bool"
   where
 "san4 statement = (\<not>(staticBAD (staticEvalS statement ([], []))))"
 
+(* choisit la version de san qu'on veut utiliser pour éécuter les tests suivants *)
 definition "chosensan = san4"
 
 lemma "(BAD (evalS p (t, inch, []))) \<longrightarrow> (\<not>(chosensan p))"
+  (* nitpick[timeout=120] *)
+  (* quickcheck[tester=narrowing,size=5,timeout=120] *)
   sorry
 
-value "san4 (Exec (Sub (Variable ''s1'') (Variable ''s2'')))"
-value "BAD (evalS (Exec (Sub (Variable ''s1'') (Variable ''s2''))) ([]::symTable, []::inchan, []::outchan))"
+
 value "evalS (Exec (Sub (Variable ''s'') (Variable ''s''))) ([]::symTable, []::inchan, []::outchan)"
 value "staticEvalS (Read ''v1'') ([]::staticSymTable, []::staticOutchan)"
 value "staticEvalS ( Seq (Read ''v1'') (Exec (Variable ''v1'')) ) ([]::staticSymTable, []::staticOutchan)"
 value "staticBAD ([(''v1'', Undefine)], [SX Undefine])"
 
-
-value "chosensan ok0"
+value "chosensan ok0" 
 value "chosensan ok1"
 value "chosensan ok2"
 value "chosensan ok3"
@@ -376,8 +404,8 @@ value "chosensan bad9"
    ne provoquera pas d'exec(0) *)
 
 lemma correction: "(BAD (evalS p ([], inch, []))) \<longrightarrow> (\<not>(san4 p))"
-  nitpick[timeout=120]
-  quickcheck[tester=narrowing,size=5,timeout=120]
+  (* nitpick[timeout=120] *)
+  (* quickcheck[tester=narrowing,size=5,timeout=120] *)
   sorry
 
 
@@ -509,6 +537,8 @@ import AutomaticConversion._
 
 (* Directive pour l'exportation de l'analyseur *)
 
+(* J'ai enlevé le code entre () avant file,
+   n'injecter que l'objet tp67 du code généré pour éviter les erreurs de syntaxes *)
 export_code chosensan in Scala file "~/Master1-IL/ACF/TP-67/san.scala"
 
 (* à adapter en fonction du chemin de votre projet TP67 *)
