@@ -72,7 +72,6 @@ definition "p3= (Seq (Aff ''x'' (Constant 0)) (Exec (Variable ''x'')))"
 *)
 definition "p4= (Seq (Read ''x'') (Print (Sum (Variable ''x'') (Constant 1))))"
 
-
 (* Le type des evenements soit X: execute, soit P: print et le type static correspondant *)
 datatype event= X int | P int
 
@@ -539,7 +538,8 @@ import AutomaticConversion._
 
 (* J'ai enlevé le code entre () avant file,
    n'injecter que l'objet tp67 du code généré pour éviter les erreurs de syntaxes *)
-export_code chosensan in Scala file "~/Master1-IL/ACF/TP-67/san.scala"
+
+(* export_code chosensan in Scala file "~/Master1-IL/ACF/TP-67/san.scala" *)
 
 (* à adapter en fonction du chemin de votre projet TP67 *)
 
