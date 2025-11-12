@@ -1,9 +1,0 @@
-[0m[[0m[33mwarn[0m] [0m[0m/private/student/c/ec/elepellec/Master1-IL/ACF/TP-67/TP67_ACF/src/main/scala/tp67/tp67.scala:191:21: unreachable code[0m
-[0m[[0m[33mwarn[0m] [0m[0m  case (true, p) => p[0m
-[0m[[0m[33mwarn[0m] [0m[0m                    ^[0m
-[0m[[0m[33mwarn[0m] [0m[0m/private/student/c/ec/elepellec/Master1-IL/ACF/TP-67/TP67_ACF/src/main/scala/tp67/tp67.scala:200:18: Generated class tp67.Str$Char differs only in case from tp67.Str$char.[0m
-[0m[[0m[33mwarn[0m] [0m[0m  Such classes will overwrite one another on case-insensitive filesystems.[0m
-[0m[[0m[33mwarn[0m] [0m[0mfinal case class Char(a: Boolean, b: Boolean, c: Boolean, d: Boolean,[0m
-[0m[[0m[33mwarn[0m] [0m[0m                 ^[0m
-[0m[[0m[33mwarn[0m] [0m[0m6 feature warnings; re-run with -feature for details[0m
-[0m[[0m[33mwarn[0m] [0m[0mthree warnings found[0m

@@ -254,6 +254,7 @@ object tp67 {
   abstract sealed class staticValue
   final case class Undefine() extends staticValue
   final case class Value(a: Int.int) extends staticValue
+  final case class Either(a: Int.int, b: Int.int) extends staticValue
   
   abstract sealed class staticEvent
   final case class SX(a: staticValue) extends staticEvent
@@ -262,13 +263,25 @@ object tp67 {
   def staticSub(x0: staticValue, uu: staticValue): staticValue = (x0, uu) match {
     case (Undefine(), uu) => Undefine()
     case (Value(v), Undefine()) => Undefine()
+    case (Either(v, va), Undefine()) => Undefine()
     case (Value(x), Value(y)) => Value(Int.minus_int(x, y))
+    case (Either(x, y), Value(z)) =>
+      Either(Int.minus_int(x, z), Int.minus_int(y, z))
+    case (Value(x), Either(y, z)) =>
+      Either(Int.minus_int(x, y), Int.minus_int(x, z))
+    case (Either(x, y), Either(z, t)) => Undefine()
   }
   
   def staticAdd(x0: staticValue, uu: staticValue): staticValue = (x0, uu) match {
     case (Undefine(), uu) => Undefine()
     case (Value(v), Undefine()) => Undefine()
+    case (Either(v, va), Undefine()) => Undefine()
     case (Value(x), Value(y)) => Value(Int.plus_int(x, y))
+    case (Either(x, y), Value(z)) =>
+      Either(Int.plus_int(x, z), Int.plus_int(y, z))
+    case (Value(x), Either(y, z)) =>
+      Either(Int.plus_int(x, y), Int.plus_int(x, z))
+    case (Either(x, y), Either(z, t)) => Undefine()
   }
   
   def assoc[A : HOL.equal, B](uu: A, x1: List[(A, B)]): option[B] = (uu, x1) match
@@ -306,11 +319,13 @@ object tp67 {
       staticSub(staticEvalE(e1, e), staticEvalE(Sub(v, va), e))
   }
   
-  def staticEqual(x0: staticValue, uu: staticValue): option[Boolean] = (x0, uu)
+  def staticEqual(e1: staticValue, e2: staticValue): option[Boolean] = (e1, e2)
     match {
-    case (Undefine(), uu) => Nonea[Boolean]()
-    case (Value(v), Undefine()) => Nonea[Boolean]()
     case (Value(x), Value(y)) => Somea[Boolean](Int.equal_int(x, y))
+    case (Undefine(), e2) => Nonea[Boolean]()
+    case (Either(v, va), e2) => Nonea[Boolean]()
+    case (e1, Undefine()) => Nonea[Boolean]()
+    case (e1, Either(v, va)) => Nonea[Boolean]()
   }
   
   def staticEvalC(x0: condition, t: List[(List[Str.char], staticValue)]):
@@ -335,14 +350,6 @@ object tp67 {
       staticEqual(staticEvalE(e1, t), staticEvalE(Sub(v, va), t))
   }
   
-  def equal_staticValue(x0: staticValue, x1: staticValue): Boolean = (x0, x1)
-    match {
-    case (Undefine(), Value(x2)) => false
-    case (Value(x2), Undefine()) => false
-    case (Value(x2), Value(y2)) => Int.equal_int(x2, y2)
-    case (Undefine(), Undefine()) => true
-  }
-  
   def cleanTable(x0: List[(List[Str.char], staticValue)]):
         List[(List[Str.char], staticValue)]
     =
@@ -357,13 +364,17 @@ object tp67 {
     =
     (x0, ys) match {
     case (Nil, ys) => cleanTable(ys)
-    case ((x, e) :: xs, ys) =>
+    case ((x, Undefine()) :: xs, ys) => (x, Undefine()) :: joinTables(xs, ys)
+    case ((x, Value(e)) :: xs, ys) =>
       (assoc[List[Str.char], staticValue](x, ys) match {
          case Nonea() => (x, Undefine()) :: joinTables(xs, ys)
-         case Somea(y) =>
-           (if (equal_staticValue(e, y)) (x, e) :: joinTables(xs, ys)
-             else (x, Undefine()) :: joinTables(xs, ys))
+         case Somea(Undefine()) => (x, Undefine()) :: joinTables(xs, ys)
+         case Somea(Value(y)) =>
+           (if (Int.equal_int(e, y)) (x, Value(e)) :: joinTables(xs, ys)
+             else (x, Either(e, y)) :: joinTables(xs, ys))
+         case Somea(Either(_, _)) => (x, Undefine()) :: joinTables(xs, ys)
        })
+    case ((x, Either(a, b)) :: xs, ys) => (x, Undefine()) :: joinTables(xs, ys)
   }
   
   def getSection(t1: List[(List[Str.char], staticValue)],
@@ -424,6 +435,9 @@ object tp67 {
     case (t, SX(Undefine()) :: outch) => true
     case (t, SX(Value(e)) :: outch) =>
       Int.equal_int(e, Int.zero_int) || staticBAD((t, outch))
+    case (t, SX(Either(x, y)) :: outch) =>
+      Int.equal_int(x, Int.zero_int) ||
+        (Int.equal_int(y, Int.zero_int) || staticBAD((t, outch)))
     case (t, SP(e) :: outch) => staticBAD((t, outch))
   }
   

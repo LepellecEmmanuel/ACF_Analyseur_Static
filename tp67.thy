@@ -1,5 +1,8 @@
+(* Lepellec Emmanuel  *)
+(* username : elepellec *)
+
 theory tp67
-imports Main  "~~/src/HOL/Library/Code_Target_Int" 
+imports Main  "~~/src/HOL/Library/Code_Target_Int"
 begin
 
 (* Types des expressions, conditions et programmes (statement) *)
@@ -83,7 +86,7 @@ type_synonym outchan= "event list"
 definition "el1= [X 1, P 10, X 0, P 20]"                   (* Un exemple de flux de sortie *)
 
 type_synonym inchan= "int list"           
-definition "il1= [1,-2,10]"                                (* Un exemple de flux d'entree [1,-2,10]              *)
+definition "il1= [1,-2,10]"                                (* Un exemple de flux d'entree [1,-2,10] *)
 
 type_synonym symTable= "(string * int) list"
 definition "(st1::symTable)= [(''x'',10),(''y'',12)]"      (* Un exemple de table de symbole *)
@@ -363,7 +366,7 @@ fun san4::"statement \<Rightarrow> bool"
 (* choisit la version de san qu'on veut utiliser pour éécuter les tests suivants *)
 definition "chosensan = san4"
 
-lemma "(BAD (evalS p (t, inch, []))) \<longrightarrow> (\<not>(chosensan p))"
+lemma "(BAD (evalS p ([], inch, []))) \<longrightarrow> (\<not>(chosensan p))"
   (* nitpick[timeout=120] *)
   (* quickcheck[tester=narrowing,size=5,timeout=120] *)
   sorry
